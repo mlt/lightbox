@@ -273,6 +273,11 @@ var Lightbox = (function ($) {
 				return contentType;
 			}
 		}, {
+			key: '_getSource',
+			value: function _getSource(element) {
+				return element.attr('data-remote') || element.attr('href') || element.attr('data-src');
+			}
+		}, {
 			key: '_isImage',
 			value: function _isImage(string) {
 				return string && string.match(/(^data:image\/.*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg)((\?|#).*)?$)/i);
@@ -312,7 +317,7 @@ var Lightbox = (function ($) {
 				var $toUse = this._containerToUse();
 				this._updateTitleAndFooter();
 
-				var currentRemote = this._$element.attr('data-remote') || this._$element.attr('href');
+				var currentRemote = this._getSource(this._$element);
 				var currentType = this._detectRemoteType(currentRemote, this._$element.attr('data-type') || false);
 
 				if (['image', 'youtube', 'vimeo', 'instagram', 'media', 'url'].indexOf(currentType) < 0) return this._error(this._config.strings.type);
@@ -545,7 +550,7 @@ var Lightbox = (function ($) {
 				var next = $(this._$galleryItems.get(startIndex), false);
 				if (typeof next == 'undefined') return;
 
-				var src = next.attr('data-remote') || next.attr('href');
+				var src = this._getSource(next);
 				if (next.attr('data-type') === 'image' || this._isImage(src)) this._preloadImage(src, false);
 
 				if (numberOfTimes > 0) return this._preloadImageByIndex(startIndex + 1, numberOfTimes - 1);

@@ -248,6 +248,11 @@
                                 <td><code>data-remote="http://www...."</code></td>
                             </tr>
                             <tr>
+                                <td>src</td>
+                                <td>Alias for <code>remote</code> for those using Bootstrap 3. See <a href="https://github.com/ashleydw/lightbox/issues/309">GitHub issue</a></td>
+                                <td><code>data-src="http://www...."</code></td>
+                            </tr>
+                            <tr>
                                 <td>gallery</td>
                                 <td>For grouping elements</td>
                                 <td><code>data-gallery="gallery-name"</code></td>
@@ -300,7 +305,7 @@
                         <li><a href="#videos-gallery">Gallery of Videos</a></li>
                         <li><a href="#mixed-gallery">Mixed gallery</a></li>
                         <li><a href="#programatically-call">Programmatically call</a></li>
-                        <li><a href="#data-remote">Via <code>data-remote</code></a></li>
+                        <li><a href="#data-remote">Via <code>data-remote</code> (or <code>data-src</code>)</a></li>
                         <li><a href="#force-type">Force type</a></li>
                         <li><a href="#hidden-elements">Hidden elements</a></li>
                         <li><a href="#remote-content">Remote content</a></li>
@@ -362,7 +367,7 @@
                     <p>You cannot embed Vimeo videos using the standard url (ie http://vimeo.com/80629469); you must link to the embed source (ie player.vimeo.com/video/80629469). This will mean your link url - if the JavaScript fails, will open the full screen player (try opening the first link below in a new tab); the solution to this is to set the lightbox source directly - the second link below does this.</p>
                     <div data-code="example-3-b">
                         <p><a href="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich (using embed link)</a></p>
-                        <p><a href="http://vimeo.com/80629469" data-remote="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich</a> (with reccommended <code>data-remote</code> setting)</p>
+                        <p><a href="http://vimeo.com/80629469" data-src="http://player.vimeo.com/video/80629469" data-toggle="lightbox">City Lights - from Colin Rich</a> (with recommended <code>data-src</code> setting)</p>
                     </div>
                     <code data-code="example-3-b" data-trim="all"></code>
                     <h4>Instagram</h4>
@@ -411,7 +416,7 @@
                                 <a href="https://unsplash.it/1200/768.jpg?image=257" data-toggle="lightbox" data-gallery="mixedgallery" class="col-sm-4">
                                     <img src="https://unsplash.it/600.jpg?image=257" class="img-fluid">
                                 </a>
-                                <a href="http://vimeo.com/80629469" data-remote="http://player.vimeo.com/video/80629469" data-toggle="lightbox" data-gallery="mixedgallery" class="col-sm-4">
+                                <a href="http://vimeo.com/80629469" data-src="http://player.vimeo.com/video/80629469" data-toggle="lightbox" data-gallery="mixedgallery" class="col-sm-4">
                                     <img src="//b.vimeocdn.com/ts/458/070/458070637_200.jpg" class="img-fluid">
                                 </a>
                             </div>
@@ -444,12 +449,12 @@ $(&#39;#open-youtube&#39;).click(function (e) {
 });</code>
 
                     <h3 id="data-remote">Via <code>data-remote</code></h3>
-                    <p>Neither of these are <code>&lt;a /&gt;</code> tags, so both rely on the <code>data-remote</code> attribute.</p>
+                    <p>Neither of these are <code>&lt;a /&gt;</code> tags, so both rely on the <code>data-remote</code> attribute. Note Bootstrap 3 uses <code>data-remote</code> for modals. Use <code>data-src</code> instead.</p>
                     <div class="row">
                         <div class="offset-md-1 col-md-10">
                             <div class="row" data-code="example-7">
-                                <img src="https://unsplash.it/600.jpg?image=259" data-toggle="lightbox" data-remote="https://unsplash.it/1200/768.jpg?image=259" class="img-fluid col-sm-4">
-                                <img src="//i1.ytimg.com/vi/b0jqPvpn3sY/mqdefault.jpg" data-toggle="lightbox" data-remote="//www.youtube.com/embed/b0jqPvpn3sY" class="img-fluid col-sm-4">
+                                <img src="https://unsplash.it/600.jpg?image=259" data-toggle="lightbox" data-src="https://unsplash.it/1200/768.jpg?image=259" class="img-fluid col-sm-4">
+                                <img src="//i1.ytimg.com/vi/b0jqPvpn3sY/mqdefault.jpg" data-toggle="lightbox" data-src="//www.youtube.com/embed/b0jqPvpn3sY" class="img-fluid col-sm-4">
                             </div>
                         </div>
                     </div>
@@ -480,11 +485,11 @@ $(&#39;#open-youtube&#39;).click(function (e) {
                                     <img src="https://unsplash.it/600.jpg?image=265" class="img-fluid">
                                 </a>
                                 <!-- elements not showing, use data-remote -->
-                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=264" data-title="Hidden item 1"></div>
-                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="//www.youtube.com/embed/b0jqPvpn3sY" data-title="Hidden item 2"></div>
-                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=265" data-title="Hidden item 3"></div>
-                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=266" data-title="Hidden item 4"></div>
-                                <div data-toggle="lightbox" data-gallery="hidden-images" data-remote="https://unsplash.it/1200/768.jpg?image=267" data-title="Hidden item 5"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-src="https://unsplash.it/1200/768.jpg?image=264" data-title="Hidden item 1"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-src="//www.youtube.com/embed/b0jqPvpn3sY" data-title="Hidden item 2"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-src="https://unsplash.it/1200/768.jpg?image=265" data-title="Hidden item 3"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-src="https://unsplash.it/1200/768.jpg?image=266" data-title="Hidden item 4"></div>
+                                <div data-toggle="lightbox" data-gallery="hidden-images" data-src="https://unsplash.it/1200/768.jpg?image=267" data-title="Hidden item 5"></div>
                             </div>
                         </div>
                     </div>

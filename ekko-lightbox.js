@@ -279,6 +279,10 @@ const Lightbox = (($) => {
 			return contentType;
 		}
 
+		_getSource(element) {
+			return element.attr('data-remote') || element.attr('href') || element.attr('data-src')
+		}
+
 		_isImage(string) {
 			return string && string.match(/(^data:image\/.*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg)((\?|#).*)?$)/i)
 		}
@@ -314,7 +318,7 @@ const Lightbox = (($) => {
 			let $toUse = this._containerToUse()
 			this._updateTitleAndFooter()
 
-			let currentRemote = this._$element.attr('data-remote') || this._$element.attr('href')
+			let currentRemote = this._getSource(this._$element)
 			let currentType = this._detectRemoteType(currentRemote, this._$element.attr('data-type') || false)
 
 			if(['image', 'youtube', 'vimeo', 'instagram', 'media', 'url'].indexOf(currentType) < 0)
@@ -466,7 +470,7 @@ const Lightbox = (($) => {
 			this._toggleLoading(false);
 			return this;
 		}
-                
+
 		_showHtml5Media(url, $containerForElement) { // should be used for videos only. for remote content use loadRemoteContent (data-type=url)
 			let contentType = this._getRemoteContentType(url);
 			if(!contentType){
@@ -545,7 +549,7 @@ const Lightbox = (($) => {
 			if(typeof next == 'undefined')
 				return
 
-			let src = next.attr('data-remote') || next.attr('href')
+			let src = this._getSource(next)
 			if (next.attr('data-type') === 'image' || this._isImage(src))
 				this._preloadImage(src, false)
 
