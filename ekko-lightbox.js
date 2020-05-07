@@ -668,10 +668,12 @@ const Lightbox = (($) => {
 			config = config || {}
 			return this.each(() => {
 				let $this = $(this)
+				let data = $this.data()
+				delete data.remote
 				let _config = $.extend(
 					{},
 					Lightbox.Default,
-					$this.data(),
+					data,
 					typeof config === 'object' && config
 				)
 
